@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package spkdesi.view;
+
 /**
  *
  * @author 6P52
@@ -15,6 +16,15 @@ public class MenuUtama extends javax.swing.JFrame {
      */
     public MenuUtama() {
         initComponents();
+    }
+
+    public MenuUtama(String username) {
+        initComponents();
+        if (!username.equals("admin")) {
+            menuUser.setEnabled(false);
+            menuJenis.setEnabled(false);
+            menuPemasok.setEnabled(false);
+        }
     }
 
     /**
@@ -44,6 +54,7 @@ public class MenuUtama extends javax.swing.JFrame {
         menuLaporan = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
+        menuUser = new javax.swing.JMenuItem();
         menuLogout = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -170,6 +181,16 @@ public class MenuUtama extends javax.swing.JFrame {
         jMenu4.setFont(new java.awt.Font("Lucida Calligraphy", 0, 14)); // NOI18N
         jMenu4.add(jSeparator4);
 
+        menuUser.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        menuUser.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
+        menuUser.setText("Tambah User");
+        menuUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuUserActionPerformed(evt);
+            }
+        });
+        jMenu4.add(menuUser);
+
         menuLogout.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         menuLogout.setFont(new java.awt.Font("Lucida Calligraphy", 0, 12)); // NOI18N
         menuLogout.setText("Logout");
@@ -204,13 +225,6 @@ public class MenuUtama extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(766, 588));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void menuLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLogoutActionPerformed
-        // TODO add your handling code here:
-        dispose();
-        FrmLogin Log = new FrmLogin();
-        Log.setVisible(true);
-    }//GEN-LAST:event_menuLogoutActionPerformed
 
     private void menuJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuJenisActionPerformed
         // TODO add your handling code here:
@@ -292,6 +306,22 @@ public class MenuUtama extends javax.swing.JFrame {
         jDesktopPane1.add(fp);
     }//GEN-LAST:event_menuLaporanActionPerformed
 
+    private void menuLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLogoutActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        FrmLogin Log = new FrmLogin();
+        Log.setVisible(true);
+    }//GEN-LAST:event_menuLogoutActionPerformed
+
+    private void menuUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuUserActionPerformed
+        jDesktopPane1.removeAll();
+        jDesktopPane1.repaint();
+        FrmAdmin fa = new FrmAdmin();
+        fa.setTitle("Tambahakan User");
+        fa.setVisible(true);
+        jDesktopPane1.add(fa);
+    }//GEN-LAST:event_menuUserActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -349,5 +379,6 @@ public class MenuUtama extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuPeramalan;
     private javax.swing.JMenuItem menuPersediaan;
     private javax.swing.JMenuItem menuProses;
+    private javax.swing.JMenuItem menuUser;
     // End of variables declaration//GEN-END:variables
 }

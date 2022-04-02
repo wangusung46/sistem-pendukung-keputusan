@@ -183,7 +183,7 @@ public class FrmLogin extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Mohon Masukan Username & Password");
             } else if (r.next()) {
                 //if (username.equals(r.getString("username")) && password.equals(r.getString("password"))) {
-                    MenuUtama mnu = new MenuUtama();
+                    MenuUtama mnu = new MenuUtama(username);
                     mnu.setExtendedState(MAXIMIZED_BOTH);
                     mnu.setVisible(true);
                     dispose();
